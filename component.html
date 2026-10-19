@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Components | Game Zone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <header>
+        <h1>🎮 Game Zone</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="component.html">Components</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="data.html">Gamer Data</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="validation.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- القسم الأول: الأزرار التفاعلية -->
+        <section>
+            <h2>🕹️ Gaming Action Buttons</h2>
+            <p>Interactive buttons used across the platform for downloads and actions:</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                <button style="width: auto; padding: 10px 20px;">Download Now</button>
+                <button style="width: auto; padding: 10px 20px; background-color: #ff4d4d; color: white;">Join Tournament</button>
+                <button style="width: auto; padding: 10px 20px; background-color: #333; color: #00ffcc; border: 1px solid #00ffcc;">View Trailer</button>
+            </div>
+        </section>
+
+        <!-- القسم الثاني: تنبيهات وأوسمة اللاعبين -->
+        <section>
+            <h2>⚡ Status Banners & Badges</h2>
+            <p>Use these components to highlight special announcements or user ranks:</p>
+            <div style="background-color: #2b2b2b; border-left: 4px solid #00ffcc; padding: 15px; margin-top: 15px; border-radius: 4px;">
+                <strong>Server Status:</strong> All game servers are currently online with low latency (15ms).
+            </div>
+        </section>
+
+        <!-- القسم الثالث: بطاقات الميزات -->
+        <section>
+            <h2>🛡️ Feature Cards Component</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>High FPS</h3>
+                    <p>Optimized for smooth gameplay up to 240 frames per second.</p>
+                </div>
+                <div class="card">
+                    <h3>Anti-Cheat</h3>
+                    <p>Advanced security systems to ensure fair competitive matches.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Game Zone | UI Components Library</p>
+    </footer>
+
 </body>
 </html>

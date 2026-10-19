@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Gaming Zone</title>
+   
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gaming Zone</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="data.html">Gamer Data</a>
+            <a href="validation.html">Register</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Create Account</h2>
+            <form id="regForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <span class="error" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <span class="error" id="passwordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <span class="error" id="confirmPasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age">
+                    <span class="error" id="ageError"></span>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            document.querySelectorAll('.error').forEach(el => el.innerText = '');
+            let isValid = true;
+
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('nameError').innerText = 'Name is required.';
+                isValid = false;
+            }
+
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (email === '') {
+                document.getElementById('emailError').innerText = 'Email is required.';
+                isValid = false;
+            } else if (!email.match(emailPattern)) {
+                document.getElementById('emailError').innerText = 'Enter a valid email address.';
+                isValid = false;
+            }
+
+            const password = document.getElementById('password').value;
+            if (password.length < 8) {
+                document.getElementById('passwordError').innerText = 'Password must be at least 8 characters.';
+                isValid = false;
+            }
+
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (confirmPassword !== password || confirmPassword === '') {
+                document.getElementById('confirmPasswordError').innerText = 'Passwords do not match.';
+                isValid = false;
+            }
+
+            const age = document.getElementById('age').value;
+            if (age === '' || age <= 0) {
+                document.getElementById('ageError').innerText = 'Please enter a valid age.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Registration successful!');
+            }
+        });
+    </script>
+</body>
+</html>

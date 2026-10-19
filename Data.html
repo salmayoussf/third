@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table - Gaming Zone</title>
+    <!-- ربط ملف الـ CSS الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gaming Zone</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="data.html">Gamer Data</a>
+            <a href="validation.html">Register</a>
+        </nav>
+    </header>
+
+    <main class="table-container">
+        <h2>Gamer Directory</h2>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search by name, age, or city...">
+            <button id="sortNameBtn">Sort by Name</button>
+            <button id="sortAgeBtn">Sort by Age</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        const users = [
+            { name: 'Ahmed', age: 22, city: 'Cairo' },
+            { name: 'Sara', age: 19, city: 'Alexandria' },
+            { name: 'Omar', age: 25, city: 'Giza' },
+            { name: 'Mona', age: 20, city: 'Mansoura' },
+            { name: 'Youssef', age: 24, city: 'Cairo' }
+        ];
+
+        let currentData = [...users];
+        const tableBody = document.getElementById('tableBody');
+        const searchInput = document.getElementById('searchInput');
+
+        function renderTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                const row = `<tr>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.city}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        renderTable(currentData);
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filtered = currentData.filter(user => 
+                user.name.toLowerCase().includes(query) ||
+                user.age.toString().includes(query) ||
+                user.city.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        });
+
+        document.getElementById('sortNameBtn').addEventListener('click', () => {
+            currentData.sort((a, b) => a.name.localeCompare(b.name));
+            renderTable(currentData);
+        });
+
+        document.getElementById('sortAgeBtn').addEventListener('click', () => {
+            currentData.sort((a, b) => a.age - b.age);
+            renderTable(currentData);
+        });
+    </script>
+</body>
+</html>
